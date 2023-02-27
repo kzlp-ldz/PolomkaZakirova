@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BFDF5017-0406-448F-A6EB-383BF06C071B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>PolomkaZakirova</RootNamespace>
+    <AssemblyName>PolomkaZakirova</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\service_logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DataBase\bd_connection.cs" />
+    <Compile Include="DataBase\Client.cs">
+      <DependentUpon>PolomkaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\ClientService.cs">
+      <DependentUpon>PolomkaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\DocumentByService.cs">
+      <DependentUpon>PolomkaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Gender.cs">
+      <DependentUpon>PolomkaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Manufacturer.cs">
+      <DependentUpon>PolomkaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\PolomkaModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PolomkaModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\PolomkaModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PolomkaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\PolomkaModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PolomkaModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Product.cs">
+      <DependentUpon>PolomkaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\ProductPhoto.cs">
+      <DependentUpon>PolomkaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\ProductSale.cs">
+      <DependentUpon>PolomkaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Service.cs">
+      <DependentUpon>PolomkaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\ServicePhoto.cs">
+      <DependentUpon>PolomkaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\sysdiagrams.cs">
+      <DependentUpon>PolomkaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase\Tag.cs">
+      <DependentUpon>PolomkaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Pages\ClientListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Pages\ClientListPage.xaml.cs">
+      <DependentUpon>ClientListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="DataBase\PolomkaModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PolomkaModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DataBase\PolomkaModel.edmx.diagram">
+      <DependentUpon>PolomkaModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DataBase\PolomkaModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PolomkaModel.Context.cs</LastGenOutput>
+      <DependentUpon>PolomkaModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="DataBase\PolomkaModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PolomkaModel.edmx</DependentUpon>
+      <LastGenOutput>PolomkaModel.cs</LastGenOutput>
+    </Content>
+    <Resource Include="Resources\Clients\1.jpg" />
+    <Resource Include="Resources\Clients\10.jpg" />
+    <Resource Include="Resources\Clients\11.jpg" />
+    <Resource Include="Resources\Clients\12.jpg" />
+    <Resource Include="Resources\Clients\13.jpg" />
+    <Resource Include="Resources\Clients\14.jpg" />
+    <Resource Include="Resources\Clients\15.jpg" />
+    <Resource Include="Resources\Clients\16.jpg" />
+    <Resource Include="Resources\Clients\17.jpg" />
+    <Resource Include="Resources\Clients\18.jpg" />
+    <Resource Include="Resources\Clients\19.jpg" />
+    <Resource Include="Resources\Clients\2.jpg" />
+    <Resource Include="Resources\Clients\20.jpg" />
+    <Resource Include="Resources\Clients\21.jpg" />
+    <Resource Include="Resources\Clients\22.jpg" />
+    <Resource Include="Resources\Clients\23.jpg" />
+    <Resource Include="Resources\Clients\24.jpg" />
+    <Resource Include="Resources\Clients\25.jpg" />
+    <Resource Include="Resources\Clients\26.jpg" />
+    <Resource Include="Resources\Clients\27.jpg" />
+    <Resource Include="Resources\Clients\28.jpg" />
+    <Resource Include="Resources\Clients\29.jpg" />
+    <Resource Include="Resources\Clients\3.jpg" />
+    <Resource Include="Resources\Clients\30.jpg" />
+    <Resource Include="Resources\Clients\31.jpg" />
+    <Resource Include="Resources\Clients\32.jpg" />
+    <Resource Include="Resources\Clients\33.jpg" />
+    <Resource Include="Resources\Clients\34.jpg" />
+    <Resource Include="Resources\Clients\35.jpg" />
+    <Resource Include="Resources\Clients\36.jpg" />
+    <Resource Include="Resources\Clients\37.jpg" />
+    <Resource Include="Resources\Clients\38.jpg" />
+    <Resource Include="Resources\Clients\39.jpg" />
+    <Resource Include="Resources\Clients\4.jpg" />
+    <Resource Include="Resources\Clients\40.jpg" />
+    <Resource Include="Resources\Clients\41.jpg" />
+    <Resource Include="Resources\Clients\42.jpg" />
+    <Resource Include="Resources\Clients\43.jpg" />
+    <Resource Include="Resources\Clients\44.jpg" />
+    <Resource Include="Resources\Clients\47.jpg" />
+    <Resource Include="Resources\Clients\48.jpg" />
+    <Resource Include="Resources\Clients\5.jpg" />
+    <Resource Include="Resources\Clients\6.jpg" />
+    <Resource Include="Resources\Clients\7.jpg" />
+    <Resource Include="Resources\Clients\8.jpg" />
+    <Resource Include="Resources\Clients\9.jpg" />
+    <Resource Include="Resources\Clients\m1.jpg" />
+    <Resource Include="Resources\Clients\m10.jpg" />
+    <Resource Include="Resources\Clients\m11.jpg" />
+    <Resource Include="Resources\Clients\m12.jpg" />
+    <Resource Include="Resources\Clients\m13.jpg" />
+    <Resource Include="Resources\Clients\m14.jpg" />
+    <Resource Include="Resources\Clients\m15.jpg" />
+    <Resource Include="Resources\Clients\m16.jpg" />
+    <Resource Include="Resources\Clients\m17.jpg" />
+    <Resource Include="Resources\Clients\m18.jpg" />
+    <Resource Include="Resources\Clients\m19.jpg" />
+    <Resource Include="Resources\Clients\m2.jpg" />
+    <Resource Include="Resources\Clients\m20.jpg" />
+    <Resource Include="Resources\Clients\m21.jpg" />
+    <Resource Include="Resources\Clients\m22.jpg" />
+    <Resource Include="Resources\Clients\m23.jpg" />
+    <Resource Include="Resources\Clients\m24.jpg" />
+    <Resource Include="Resources\Clients\m25.jpg" />
+    <Resource Include="Resources\Clients\m26.jpg" />
+    <Resource Include="Resources\Clients\m27.jpg" />
+    <Resource Include="Resources\Clients\m28.jpg" />
+    <Resource Include="Resources\Clients\m29.jpg" />
+    <Resource Include="Resources\Clients\m3.jpg" />
+    <Resource Include="Resources\Clients\m30.jpg" />
+    <Resource Include="Resources\Clients\m31.jpg" />
+    <Resource Include="Resources\Clients\m32.jpg" />
+    <Resource Include="Resources\Clients\m33.jpg" />
+    <Resource Include="Resources\Clients\m34.jpg" />
+    <Resource Include="Resources\Clients\m35.jpg" />
+    <Resource Include="Resources\Clients\m36.jpg" />
+    <Resource Include="Resources\Clients\m37.jpg" />
+    <Resource Include="Resources\Clients\m38.jpg" />
+    <Resource Include="Resources\Clients\m39.jpg" />
+    <Resource Include="Resources\Clients\m4.jpg" />
+    <Resource Include="Resources\Clients\m40.jpg" />
+    <Resource Include="Resources\Clients\m41.jpg" />
+    <Resource Include="Resources\Clients\m42.jpg" />
+    <Resource Include="Resources\Clients\m43.jpg" />
+    <Resource Include="Resources\Clients\m44.jpg" />
+    <Resource Include="Resources\Clients\m45.jpg" />
+    <Resource Include="Resources\Clients\m46.jpg" />
+    <Resource Include="Resources\Clients\m47.jpg" />
+    <Resource Include="Resources\Clients\m48.jpg" />
+    <Resource Include="Resources\Clients\m49.jpg" />
+    <Resource Include="Resources\Clients\m5.jpg" />
+    <Resource Include="Resources\Clients\m50.jpg" />
+    <Resource Include="Resources\Clients\m6.jpg" />
+    <Resource Include="Resources\Clients\m7.jpg" />
+    <Resource Include="Resources\Clients\m8.jpg" />
+    <Resource Include="Resources\Clients\m9.jpg" />
+    <Resource Include="Resources\Clients\m96.jpg" />
+    <Resource Include="Resources\Clients\m97.jpg" />
+    <Resource Include="Resources\Clients\m98.jpg" />
+    <Resource Include="Resources\Clients\m99.jpg" />
+    <Resource Include="Resources\service_logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
