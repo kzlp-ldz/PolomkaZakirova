@@ -23,7 +23,8 @@ namespace PolomkaZakirova
         public MainWindow()
         {
             InitializeComponent();
-            main_frame.NavigationService.Navigate(new Pages.ClientListPage());
+            main_frame.NavigationService.Navigate(new Pages.ClientListPage(Title.ToString()));
+            
         }
     }
 }

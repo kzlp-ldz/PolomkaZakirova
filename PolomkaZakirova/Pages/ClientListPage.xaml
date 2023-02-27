@@ -9,6 +9,71 @@
       Title="ClientListPage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBox x:Name="tbSearch" TextChanged="tbSearch_TextChanged"/>
+        <ComboBox Name="cbSort" ItemsSource="{Binding Sortings.Keys}"
+                  SelectedIndex="0"
+                  Grid.Column="1"
+                  SelectionChanged="cbSort_SelectionChanged"/>
+
+        <ComboBox x:Name="cbGender" Grid.Column="2" 
+                  SelectedIndex="0"
+                  SelectionChanged="cbGender_SelectionChanged"
+                  ItemsSource="{Binding Genders}" DisplayMemberPath="Name"/>
+
+        <ListView x:Name="lvClients" ItemsSource="{Binding Clients}" Grid.Row="1" Grid.ColumnSpan="3" 
+                  HorizontalContentAlignment="Stretch"
+                  SelectionChanged="lvClients_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Image Source="{Binding PhotoPath}" Grid.RowSpan="3"/>
+                        <TextBlock x:Name="Name_tb" Grid.Column="1">
+                            <Run Text="{Binding LastName}"/>
+                            <Run Text="{Binding FirstName}"/>
+                            <Run Text="{Binding Patronymic}"/>
+                        </TextBlock>
+                        <TextBlock  Grid.Column="1" Grid.Row="1">
+                            <Run Text="Дата регистрации:"/>
+                            <Run Text="{Binding RegistrationDate}"/>
+                        </TextBlock>
+                        <TextBlock  Grid.Column="1" Grid.Row="2">
+                            <Run Text="Пол:"/>
+                            <Run Text="{Binding Gender.Name}"/>
+                        </TextBlock>
+
+                        <TextBlock Text="{Binding Phone}"
+                                   Grid.Column="2"
+                                   Grid.Row="1"
+                                   HorizontalAlignment="Right"
+                                   FontSize="20" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button x:Name="btnAddClient" Content="Добавить клиента"
+                Grid.Row="2"
+               Click="btnAddClient_Click"/>
+        <StackPanel x:Name="spPageNumbers" Orientation="Horizontal" Grid.Row="2" Grid.Column="2"/>
     </Grid>
 </Page>
