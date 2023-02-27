@@ -14,7 +14,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PolomkaZakirova.DataBase;
-using System.Runtime.Remoting.Contexts;
 
 namespace PolomkaZakirova.Pages
 {
@@ -94,23 +93,17 @@ namespace PolomkaZakirova.Pages
             var searchText = tbSearch.Text.ToLower();
             var sort = cbSort.SelectedItem as string;
 
-            if (!string.IsNullOrWhiteSpace(tbSearch.Text))
-            {
-                Clients = Context.tbSearch
-                    .Where(x => x.Title.Contains(tbSearch.Text))
-                    .OrderBy(x => x.ID)
-                    .ToList();
-            }
-            else
-            {
-                Clients = Context.tbSearch.OrderBy(x => x.ID).ToList();
-            }
+            
+
             if (gender != null && sort != null)
             {
-                ClientsForFilters = gender.Client.Where(x => x.ToString().ToLower().Contains(searchText))
-                                            .OrderBy(Sortings[sort]).ToList();
+                
+
+                ClientsForFilters = gender.Client.Where(p => p.FirstName.ToLower().Contains(searchText)).ToList();
                 if (sort.Contains("убыванию"))
                     ClientsForFilters.Reverse();
+
+                
 
                 lvClients.ItemsSource = ClientsForFilters.Skip(_page * _count).Take(_count);
                 lvClients.Items.Refresh();
