@@ -121,9 +121,9 @@ namespace PolomkaZakirova.Pages
 
         private void lvClients_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-           // var client = (Client)lvClients.SelectedItem;
-           // if (client != null)
-           //     NavigationService.Navigate(new ClientPage(client));
+           var client = (Client)lvClients.SelectedItem;
+           if (client != null)
+               NavigationService.Navigate(new ClientPage(client));
         }
 
 
@@ -145,7 +145,7 @@ namespace PolomkaZakirova.Pages
 
         private void btnAddClient_Click(object sender, RoutedEventArgs e)
         {
-           // NavigationService.Navigate(new ClientPage(new Client { RegistrationDate = DateTime.Now }));
+            NavigationService.Navigate(new ClientPage(new Client { RegistrationDate = (DateTime.Now).ToString() }));
         }
     }
 }
